@@ -3,6 +3,9 @@ let sales = 123_456_789
 let course_name = 'nalinda'
 let is_published = true
 
+course_name = "Physics" //can change let type to some other string but not to any other type like number
+// course_name = 12 //this is wrong 
+
 // any type
 let level;
 function fetchCourse(title: string) {
@@ -11,6 +14,8 @@ function fetchCourse(title: string) {
 fetchCourse("Maths")
 
 //arrays
+let courses: string[]; //undefined string array
+let names: string[] = []; //define empty string array
 let jsArray = [1, 2, '3'] // JS arrays are dynamic, can store different types
 let tsArray: number[] = [1, 2, 3]
 
@@ -38,9 +43,22 @@ function calculateTax(income: number, taxYear = 2022): number {
     // if not return it will always return undefined
     return income * 1.3
 }
-
 calculateTax(10_000, 2022)
 calculateTax(10_000)
+
+//optional c parameter
+//return type as number
+const add = (a: number, b: number, c?: number | string): number => {
+    return a + b;
+}
+add(1, 2)
+
+//function signature
+let calc: (a: number, b: number) => number;
+
+calc = (numOne: number, numTwo: number): number => {
+    return numOne + numTwo;
+}
 
 //Objects
 let employee1: {
@@ -84,6 +102,8 @@ let employee4: Employee = {
 }
 
 //union types
+let unionArray: (string | number)[] = []; //string or number array
+
 function kgToLbs(weight: number | string) : number {
     if (typeof weight === 'number') {
         return weight * 1.1
