@@ -178,13 +178,23 @@ log2?.('Abc')
 
 //classes
 class Invoice {
-    client: string;
-    amount: number;
+    public client: string;
+    readonly amount: number;
+    // public date1: string; // can access within the class and outside
+    // private date2: string; // can access only within the class
+    // readonly date3: string; // cannot access within the class or outside
 
     constructor(c: string, a: number) {
         this.client = c;
         this.amount = a;
     }
+
+    /* Shorthand syntax for above class verialbles and constrctor
+    constructor() {
+        public client: string,
+        readonly amount: number,
+    }
+    */
 
     format() {
         return `${this.client} owes ${this.amount}`
@@ -193,3 +203,21 @@ class Invoice {
 
 let invoiceOne = new Invoice("Nalinda", 100);
 let invoiceTwo = new Invoice("Amal", 200);
+console.log(invoiceOne.client)
+
+//interfaces
+//we don't use interfaces to create objects 
+//only use it to enforce certain type of structure within classes or objects
+interface IsPerson {
+    name: string;
+    age: number;
+    speak(a: string): void;
+}
+
+const me: IsPerson = {
+    name: "Nalinda",
+    age: 21,
+    speak(text: string): void {
+        console.log(text);
+    },
+}
