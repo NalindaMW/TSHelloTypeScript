@@ -175,3 +175,21 @@ let log2: any = null
 
 log1('Nalinda')
 log2?.('Abc')
+
+//classes
+class Invoice {
+    client: string;
+    amount: number;
+
+    constructor(c: string, a: number) {
+        this.client = c;
+        this.amount = a;
+    }
+
+    format() {
+        return `${this.client} owes ${this.amount}`
+    }
+}
+
+let invoiceOne = new Invoice("Nalinda", 100);
+let invoiceTwo = new Invoice("Amal", 200);
