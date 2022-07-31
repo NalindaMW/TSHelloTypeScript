@@ -6,6 +6,8 @@ let is_published = true
 course_name = "Physics" //can change let type to some other string but not to any other type like number
 // course_name = 12 //this is wrong 
 
+// ====================================================== //
+
 // any type
 let level;
 function fetchCourse(title: string) {
@@ -13,17 +15,23 @@ function fetchCourse(title: string) {
 }
 fetchCourse("Maths")
 
+// ====================================================== //
+
 //arrays
 let courses: string[]; //undefined string array
 let names: string[] = []; //define empty string array
 let jsArray = [1, 2, '3'] // JS arrays are dynamic, can store different types
 let tsArray: number[] = [1, 2, 3]
 
+// ====================================================== //
+
 //tuples
 // tuples are key value paired
 // can create more than 2 items in a tuple, but not recommanded
 let user: [number, string] = [1, 'nalinda']
 console.log(user[1].toUpperCase())
+
+// ====================================================== //
 
 //enum
 const enum Size1 { Small, Medium, Large } //start with 0 index //use const keyword for more optimise code
@@ -32,6 +40,8 @@ enum Size3 { Small = 's', Medium = 'm', Large = 'l' } //assign string values
 
 let mySize: Size1 = Size1.Medium
 console.log(mySize)
+
+// ====================================================== //
 
 //functions
 // if we want to optional taxYear, give the defauklt value
@@ -60,6 +70,8 @@ calc = (numOne: number, numTwo: number): number => {
     return numOne + numTwo;
 }
 
+// ====================================================== //
+
 //Objects
 let employee1: {
     id: number,
@@ -86,6 +98,8 @@ let employee3: {
     },
 }
 
+// ====================================================== //
+
 //type aliases
 type Employee = {
     id: number,
@@ -101,6 +115,8 @@ let employee4: Employee = {
     },
 }
 
+// ====================================================== //
+
 //union types
 let unionArray: (string | number)[] = []; //string or number array
 
@@ -114,6 +130,8 @@ function kgToLbs(weight: number | string) : number {
 
 kgToLbs(10);
 kgToLbs("10kg");
+
+// ====================================================== //
 
 //type instersection
 type Draggable = {
@@ -131,6 +149,8 @@ let textBox: UIWidget = {
     resize: () => { },
 }
 
+// ====================================================== //
+
 //Literal types
 // set exact or specific values to a variable
 let quantity1: 50 | 100 = 50
@@ -139,6 +159,8 @@ type Quantity = 50 | 100
 let quantity2: Quantity = 50
 
 type Metric = 'cm' | 'inch'
+
+// ====================================================== //
 
 //Nullable types
 //function greetings(name: string) { //if you want to pass null or undefined use union type
@@ -152,6 +174,8 @@ function greetings(name: string | null | undefined) {
 
 greetings('Nalinda')
 greetings(null)
+
+// ====================================================== //
 
 //Optional chaining
 type Customer = {
@@ -175,6 +199,8 @@ let log2: any = null
 
 log1('Nalinda')
 log2?.('Abc')
+
+// ====================================================== //
 
 //classes
 class Invoice {
@@ -204,6 +230,8 @@ class Invoice {
 let invoiceOne = new Invoice("Nalinda", 100);
 let invoiceTwo = new Invoice("Amal", 200);
 console.log(invoiceOne.client)
+
+// ====================================================== //
 
 //interfaces
 //we don't use interfaces to create objects 
@@ -238,3 +266,33 @@ class InvoiceOne implements HasInvoice {
     }
 }
 
+// ====================================================== //
+
+// Generics
+// const addUID = (obj: object) => {    // standard function
+// const addUID = <T>(obj: T) => {         // basic generics
+// const addUID = <T extends object>(obj: T) => {      // generics accpet specific type
+const addUID = <T extends {name: string}>(obj: T) => {      // generics only accept object with name property
+    let uid = Math.floor(Math.random() * 100)
+    return {...obj, uid} 
+}
+
+let docOne = addUID({name: "Nalinda", age: 21})
+// let docTwo = addUID("Hello")
+
+console.log(docOne.name)
+
+// Generics in interfaces
+interface Resource<T> {
+    uid: number;
+    name: string;
+    data: T;
+}
+
+const docThree: Resource<string> = {
+    uid: 1,
+    name: "Nalinda",
+    data: "String Generics"
+}
+
+// ====================================================== //
