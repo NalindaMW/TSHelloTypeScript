@@ -190,10 +190,10 @@ class Invoice {
     }
 
     /* Shorthand syntax for above class verialbles and constrctor
-    constructor() {
+    constructor (
         public client: string,
         readonly amount: number,
-    }
+    ) {}
     */
 
     format() {
@@ -221,3 +221,20 @@ const me: IsPerson = {
         console.log(text);
     },
 }
+
+//Using interfaces in classes
+interface HasInvoice {
+    format(): string;
+}
+
+class InvoiceOne implements HasInvoice {
+    constructor(
+        public client: string,
+        readonly amount: number,
+    ) {}
+
+    format(): string {
+        return `${this.client} owes ${this.amount}`;
+    }
+}
+
