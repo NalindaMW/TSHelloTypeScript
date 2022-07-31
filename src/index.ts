@@ -296,3 +296,13 @@ const docThree: Resource<string> = {
 }
 
 // ====================================================== //
+
+// Enums
+enum ResourceType { BOOK, AUTHOR, FILM }
+
+interface Movie {
+    name: string;
+    resourceType: ResourceType;
+}
+
+const movieOne = { name: "Titanic", resourceType: ResourceType.FILM }
